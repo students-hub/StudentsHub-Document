@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "870350ed-dd80-459c-883d-a6acb84c3969",
+		"name": "FileOperation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateBucket",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bucketName\":\"小小之豪\"\r\n}\r\n//创建一个bucket，它的名字有严格的限制，请查看官方文档。",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/v1/FileSystem",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GETBucketInfo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "javascript"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/v1/FileSystem/info/:bucketname",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem",
+						"info",
+						":bucketname"
+					],
+					"variable": [
+						{
+							"key": "bucketname",
+							"value": "go-api-proj",
+							"description": "要查询信息的Bucket"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "uploadFile",
+							"description": "文件名，不给文件名怎么上传？？",
+							"type": "file",
+							"src": "/C:/Users/ssk/Desktop/实验报告模板.doc"
+						},
+						{
+							"key": "bucketName",
+							"value": "go-api-proj",
+							"description": "要上传到哪个BUCKET里面去呢？？",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/v1/FileSystem/uploadfile",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem",
+						"uploadfile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8080/v1/FileSystem/download?bucketName=go-api-proj&fileName=实验报告模板.doc",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem",
+						"download"
+					],
+					"query": [
+						{
+							"key": "bucketName",
+							"value": "go-api-proj",
+							"description": "从哪儿下啊？"
+						},
+						{
+							"key": "fileName",
+							"value": "实验报告模板.doc",
+							"description": "名字是什么？？？"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
