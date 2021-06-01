@@ -39,12 +39,12 @@
 					}
 				},
 				"url": {
-					"raw": "127.0.0.1:8080/v1/FileSystem",
+					"raw": "1.14.165.254:8080/v1/FileSystem",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"1",
+						"14",
+						"165",
+						"254"
 					],
 					"port": "8080",
 					"path": [
@@ -79,12 +79,13 @@
 					}
 				},
 				"url": {
-					"raw": "127.0.0.1:8080/v1/FileSystem/info/:bucketname",
+					"raw": "http://1.14.165.254:8080/v1/FileSystem/info/:bucketname",
+					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"1",
+						"14",
+						"165",
+						"254"
 					],
 					"port": "8080",
 					"path": [
@@ -138,12 +139,12 @@
 					}
 				},
 				"url": {
-					"raw": "127.0.0.1:8080/v1/FileSystem/uploadfile",
+					"raw": "1.14.165.254:8080/v1/FileSystem/uploadfile",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"1",
+						"14",
+						"165",
+						"254"
 					],
 					"port": "8080",
 					"path": [
@@ -161,12 +162,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "127.0.0.1:8080/v1/FileSystem/download?bucketName=go-api-proj&fileName=实验报告模板.doc",
+					"raw": "1.14.165.254:8080/v1/FileSystem/download?bucketName=go-api-proj&fileName=实验报告模板.doc",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"1",
+						"14",
+						"165",
+						"254"
 					],
 					"port": "8080",
 					"path": [
@@ -195,7 +196,64 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "1.14.165.254:8080/v1/FileSystem/delete?fileName=实验报告模板.doc&bucketName=go-api-proj",
+					"host": [
+						"1",
+						"14",
+						"165",
+						"254"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "fileName",
+							"value": "实验报告模板.doc",
+							"description": "%^$#^%$&$^@$%$%%@%$@"
+						},
+						{
+							"key": "bucketName",
+							"value": "go-api-proj",
+							"description": "#@%^^$%((*(*(*(*(&(&&(*&(*&*&"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListFiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "1.14.165.254:8080/v1/FileSystem/getFileList/:bucketName",
+					"host": [
+						"1",
+						"14",
+						"165",
+						"254"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem",
+						"getFileList",
+						":bucketName"
+					],
+					"variable": [
+						{
+							"key": "bucketName",
+							"value": "go-api-proj",
+							"description": "bucketName是什么？你是不是耳聋？你听到没有？"
+						}
+					]
+				}
 			},
 			"response": []
 		}
