@@ -31,7 +31,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"bucketName\":\"小小之豪\"\r\n}\r\n//创建一个bucket，它的名字有严格的限制，请查看官方文档。",
+					"raw": "{\r\n    \"bucketName\":\"小小之豪\"\r\n}\r\n//创建一个bucket，它的名字有严格的限制，请查看官方文档。\r\n/*存储空间是用户用于存储对象（Object）的容器，所有的对象都必须隶属于某个存储空间。存储空间具有各种配置属性，包括地域、访问权限、存储类型等。用户可以根据实际需求，创建不同类型的存储空间来存储不同的数据。\r\n\r\n同一个存储空间的内部是扁平的，没有文件系统的目录等概念，所有的对象都直接隶属于其对应的存储空间。\r\n每个用户可以拥有多个存储空间。\r\n存储空间的名称在OSS范围内必须是全局唯一的，一旦创建之后无法修改名称。\r\n存储空间内部的对象数目没有限制。\r\n存储空间的命名规范如下：\r\n\r\n只能包括小写字母、数字和短划线（-）。\r\n必须以小写字母或者数字开头和结尾。\r\n长度必须在3~63字节之间。*/",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -39,12 +39,9 @@
 					}
 				},
 				"url": {
-					"raw": "1.14.165.254:8080/v1/FileSystem",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem",
 					"host": [
-						"1",
-						"14",
-						"165",
-						"254"
+						"{{ipaddress}}"
 					],
 					"port": "8080",
 					"path": [
@@ -79,13 +76,9 @@
 					}
 				},
 				"url": {
-					"raw": "http://1.14.165.254:8080/v1/FileSystem/info/:bucketname",
-					"protocol": "http",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/info/:bucketname",
 					"host": [
-						"1",
-						"14",
-						"165",
-						"254"
+						"{{ipaddress}}"
 					],
 					"port": "8080",
 					"path": [
@@ -131,20 +124,12 @@
 							"description": "要上传到哪个BUCKET里面去呢？？",
 							"type": "text"
 						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					]
 				},
 				"url": {
-					"raw": "1.14.165.254:8080/v1/FileSystem/uploadfile",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/uploadfile",
 					"host": [
-						"1",
-						"14",
-						"165",
-						"254"
+						"{{ipaddress}}"
 					],
 					"port": "8080",
 					"path": [
@@ -162,12 +147,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "1.14.165.254:8080/v1/FileSystem/download?bucketName=go-api-proj&fileName=实验报告模板.doc",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/download?bucketName=go-api-proj&fileName=实验报告模板.doc",
 					"host": [
-						"1",
-						"14",
-						"165",
-						"254"
+						"{{ipaddress}}"
 					],
 					"port": "8080",
 					"path": [
@@ -197,12 +179,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "1.14.165.254:8080/v1/FileSystem/delete?fileName=实验报告模板.doc&bucketName=go-api-proj",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/delete?fileName=实验报告模板.doc&bucketName=go-api-proj",
 					"host": [
-						"1",
-						"14",
-						"165",
-						"254"
+						"{{ipaddress}}"
 					],
 					"port": "8080",
 					"path": [
@@ -232,12 +211,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "1.14.165.254:8080/v1/FileSystem/getFileList/:bucketName",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/getFileList/:bucketName",
 					"host": [
-						"1",
-						"14",
-						"165",
-						"254"
+						"{{ipaddress}}"
 					],
 					"port": "8080",
 					"path": [
@@ -254,6 +230,47 @@
 						}
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListFileWithPrefix",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/getFileWithPrefix/:bucketName/:prefix",
+					"host": [
+						"{{ipaddress}}"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem",
+						"getFileWithPrefix",
+						":bucketName",
+						":prefix"
+					],
+					"variable": [
+						{
+							"key": "bucketName",
+							"value": ""
+						},
+						{
+							"key": "prefix",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RenameFiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
 			},
 			"response": []
 		}
