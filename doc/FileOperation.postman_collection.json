@@ -126,7 +126,7 @@
 							"key": "uploadFile",
 							"description": "文件名，不给文件名怎么上传？？",
 							"type": "file",
-							"src": "/D:/课件/习概/第八讲 习近平外交思想2021.pptx"
+							"src": "/C:/Users/ssk/Desktop/云雾去除/LNCS用户手册以及模板/Quick Start.pdf"
 						},
 						{
 							"key": "bucketName",
@@ -136,7 +136,7 @@
 						},
 						{
 							"key": "filePath",
-							"value": "ppt",
+							"value": "other/SZH/money/",
 							"description": "上传路径是什么",
 							"type": "text"
 						}
@@ -163,7 +163,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/download?bucketName=go-api-proj&fileName=Docs/08519033.pdf",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/download?bucketName=go-api-proj&fileName=other/课表.xlsx",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -181,7 +181,7 @@
 						},
 						{
 							"key": "fileName",
-							"value": "Docs/08519033.pdf",
+							"value": "other/课表.xlsx",
 							"description": "名字是什么？？？ 需要完整的路径"
 						}
 					]
@@ -196,7 +196,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"fileName\":\"as\",\r\n    \"bucketName\":\"go-api-proj\"\r\n}",
+					"raw": "{\r\n    \"fileName\":\"other/SZH/网络图片.png\",\r\n    \"bucketName\":\"go-api-proj\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -288,7 +288,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"prefix\":\"other/\"\r\n}",
+					"raw": "{\r\n    \"prefix\":\"homework/\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -413,7 +413,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"dirName\":\"other/可爱沈吱豪4\"\r\n}",
+					"raw": "{\r\n    \"dirName\":\"other/SZH/money\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -525,6 +525,15 @@
 						}
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFileInfo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": null
 			},
 			"response": []
 		}
