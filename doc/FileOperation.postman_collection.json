@@ -195,20 +195,13 @@
 				"method": "DELETE",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "fileName",
-							"value": "comment/a.txt",
-							"description": "文件完整路径、文件夹也可以",
-							"type": "text"
-						},
-						{
-							"key": "bucketName",
-							"value": "go-api-proj",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"fileName\":\"as\",\r\n    \"bucketName\":\"go-api-proj\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "{{ipaddress}}:8080/v1/FileSystem/delete",
@@ -294,14 +287,8 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "prefix",
-							"value": "comment/",
-							"type": "text"
-						}
-					],
+					"mode": "raw",
+					"raw": "{\r\n    \"prefix\":\"other/\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -321,13 +308,6 @@
 						":bucketName",
 						""
 					],
-					"query": [
-						{
-							"key": "prefix",
-							"value": "pdf/",
-							"disabled": true
-						}
-					],
 					"variable": [
 						{
 							"key": "bucketName",
@@ -345,21 +325,13 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "oldfileName",
-							"value": "comment/pdf.png",
-							"description": "旧名字（完整路径）",
-							"type": "text"
-						},
-						{
-							"key": "newfileName",
-							"value": "comment/可爱许静宇.png",
-							"description": "新名字（完整路径）",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"oldfileName\":\"asdf\",\r\n    \"newfileName\":\"asdf\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "{{ipaddress}}:8080/v1/FileSystem/Rename/:bucketName",
@@ -404,14 +376,13 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "dirName",
-							"value": "",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"dirName\":\"comments/\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "{{ipaddress}}:8080/v1/FileSystem/ListDirInfo/:bucketName",
@@ -441,15 +412,13 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "dirName",
-							"value": "pdf/asdfsadikfjlskadlkjfsa",
-							"description": "文件路径",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"dirName\":\"other/可爱沈吱豪4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "{{ipaddress}}:8080/v1/FileSystem/CreateFolder/:bucketName",
@@ -486,14 +455,13 @@
 				"method": "DELETE",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "dirName",
-							"value": "ppt",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"dirName\":\"comments/\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "{{ipaddress}}:8080/v1/FileSystem/DeleteFolder/:bucketName",
@@ -530,19 +498,13 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "olddirName",
-							"value": "Images/",
-							"type": "text"
-						},
-						{
-							"key": "newdirName",
-							"value": "ccc/",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"olddirName\":\"comments/\",\r\n    \"newdirName\":\"comments/\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "{{ipaddress}}:8080/v1/FileSystem/RenameFolder/:bucketName",
@@ -555,18 +517,6 @@
 						"FileSystem",
 						"RenameFolder",
 						":bucketName"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": "",
-							"disabled": true
-						},
-						{
-							"key": "",
-							"value": "",
-							"disabled": true
-						}
 					],
 					"variable": [
 						{
