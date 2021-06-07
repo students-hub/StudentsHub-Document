@@ -110,26 +110,7 @@
             "post": {
                 "summary": "login",
                 "description": "login",
-                "parameters": [
-                    {
-                        "name": "user_name",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "description": "user name"
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "description": "password"
-                    }
-                ],
+                "parameters": [],
                 "operationId": "login",
                 "responses": {
                     "200": {
@@ -156,7 +137,19 @@
                 },
                 "tags": [
                     "user"
-                ]
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "user_name": "{user_name}",
+                                "password": "{password}"
+                            }
+                        }
+                    },
+                    "description": "user info"
+                }
             }
         },
         "/user/logout": {
