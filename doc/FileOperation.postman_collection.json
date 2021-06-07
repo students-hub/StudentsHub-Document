@@ -126,7 +126,7 @@
 							"key": "uploadFile",
 							"description": "文件名，不给文件名怎么上传？？",
 							"type": "file",
-							"src": "/C:/Users/ssk/Desktop/SEMZ]CMXML@4ZO%{@B1M%V2.jpg"
+							"src": "/D:/课件/习概/第八讲 习近平外交思想2021.pptx"
 						},
 						{
 							"key": "bucketName",
@@ -136,7 +136,7 @@
 						},
 						{
 							"key": "filePath",
-							"value": "",
+							"value": "ppt",
 							"description": "上传路径是什么",
 							"type": "text"
 						}
@@ -192,14 +192,14 @@
 		{
 			"name": "Delete",
 			"request": {
-				"method": "POST",
+				"method": "DELETE",
 				"header": [],
 				"body": {
 					"mode": "formdata",
 					"formdata": [
 						{
 							"key": "fileName",
-							"value": "Image/SEMZ]CMXML@4ZO%{@B1M%V2.jpg",
+							"value": "comment/a.txt",
 							"description": "文件完整路径、文件夹也可以",
 							"type": "text"
 						},
@@ -291,10 +291,25 @@
 		{
 			"name": "ListFileWithPrefix（列出当前目录下面的所有文件，包括子目录）",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "prefix",
+							"value": "comment/",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/getFileWithPrefix/:bucketName/?prefix=",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/getFileWithPrefix/:bucketName/",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -309,12 +324,7 @@
 					"query": [
 						{
 							"key": "prefix",
-							"value": "",
-							"description": "要列举的文件夹路径（完整路径）"
-						},
-						{
-							"key": null,
-							"value": "",
+							"value": "pdf/",
 							"disabled": true
 						}
 					],
@@ -332,10 +342,27 @@
 		{
 			"name": "RenameFiles",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "oldfileName",
+							"value": "comment/pdf.png",
+							"description": "旧名字（完整路径）",
+							"type": "text"
+						},
+						{
+							"key": "newfileName",
+							"value": "comment/可爱许静宇.png",
+							"description": "新名字（完整路径）",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/Rename/:bucketName?oldfileName=论文数据对比.docx&newfileName=可爱沈之豪.docx",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/Rename/:bucketName",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -350,12 +377,14 @@
 						{
 							"key": "oldfileName",
 							"value": "论文数据对比.docx",
-							"description": "旧名字（完整路径）"
+							"description": "旧名字（完整路径）",
+							"disabled": true
 						},
 						{
 							"key": "newfileName",
 							"value": "可爱沈之豪.docx",
-							"description": "新名字（完整路径）"
+							"description": "新名字（完整路径）",
+							"disabled": true
 						}
 					],
 					"variable": [
@@ -372,10 +401,20 @@
 		{
 			"name": "ListDirInfo（列出当前目录下面的所有目录信息)",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "dirName",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/ListDirInfo/:bucketName?dirName=",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/ListDirInfo/:bucketName",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -385,13 +424,6 @@
 						"FileSystem",
 						"ListDirInfo",
 						":bucketName"
-					],
-					"query": [
-						{
-							"key": "dirName",
-							"value": "",
-							"description": "完整路径"
-						}
 					],
 					"variable": [
 						{
@@ -406,10 +438,21 @@
 		{
 			"name": "CreateFolder",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "dirName",
+							"value": "pdf/asdfsadikfjlskadlkjfsa",
+							"description": "文件路径",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/CreateFolder/:bucketName?dirName=可爱沈之豪",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/CreateFolder/:bucketName",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -422,8 +465,9 @@
 					],
 					"query": [
 						{
-							"key": "dirName",
-							"value": "可爱沈之豪"
+							"key": "",
+							"value": "",
+							"disabled": true
 						}
 					],
 					"variable": [
@@ -439,10 +483,20 @@
 		{
 			"name": "DeleteFolder",
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "dirName",
+							"value": "ppt",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/DeleteFolder/:bucketName?dirName=Docs",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/DeleteFolder/:bucketName",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -455,8 +509,9 @@
 					],
 					"query": [
 						{
-							"key": "dirName",
-							"value": "Docs"
+							"key": "",
+							"value": "",
+							"disabled": true
 						}
 					],
 					"variable": [
@@ -472,10 +527,25 @@
 		{
 			"name": "RenameFolders",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "olddirName",
+							"value": "Images/",
+							"type": "text"
+						},
+						{
+							"key": "newdirName",
+							"value": "ccc/",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/RenameFolder/:bucketName?olddirName=Images/&newdirName=ccc/",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/RenameFolder/:bucketName",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -488,12 +558,14 @@
 					],
 					"query": [
 						{
-							"key": "olddirName",
-							"value": "Images/"
+							"key": "",
+							"value": "",
+							"disabled": true
 						},
 						{
-							"key": "newdirName",
-							"value": "ccc/"
+							"key": "",
+							"value": "",
+							"disabled": true
 						}
 					],
 					"variable": [
