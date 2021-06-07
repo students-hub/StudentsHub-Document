@@ -7,8 +7,11 @@
 	"item": [
 		{
 			"name": "CreateBucket",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "",
@@ -39,7 +42,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem?bucketName=go-api-proj",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -47,6 +50,13 @@
 					"path": [
 						"v1",
 						"FileSystem"
+					],
+					"query": [
+						{
+							"key": "bucketName",
+							"value": "go-api-proj",
+							"description": "文件夹名字"
+						}
 					]
 				}
 			},
@@ -91,7 +101,7 @@
 						{
 							"key": "bucketname",
 							"value": "go-api-proj",
-							"description": "要查询信息的Bucket"
+							"description": "要查询信息的文件夹（bucket）"
 						}
 					]
 				}
@@ -116,12 +126,18 @@
 							"key": "uploadFile",
 							"description": "文件名，不给文件名怎么上传？？",
 							"type": "file",
-							"src": "/C:/Users/ssk/Desktop/实验报告模板.doc"
+							"src": "/C:/Users/ssk/Desktop/SEMZ]CMXML@4ZO%{@B1M%V2.jpg"
 						},
 						{
 							"key": "bucketName",
 							"value": "go-api-proj",
 							"description": "要上传到哪个BUCKET里面去呢？？",
+							"type": "text"
+						},
+						{
+							"key": "filePath",
+							"value": "Image",
+							"description": "上传路径是什么",
 							"type": "text"
 						}
 					]
@@ -147,7 +163,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/download?bucketName=go-api-proj&fileName=实验报告模板.doc",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/download?bucketName=go-api-proj&fileName=Docs/08519033.pdf",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -165,8 +181,8 @@
 						},
 						{
 							"key": "fileName",
-							"value": "实验报告模板.doc",
-							"description": "名字是什么？？？"
+							"value": "Docs/08519033.pdf",
+							"description": "名字是什么？？？ 需要完整的路径"
 						}
 					]
 				}
@@ -176,10 +192,26 @@
 		{
 			"name": "Delete",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fileName",
+							"value": "Image/SEMZ]CMXML@4ZO%{@B1M%V2.jpg",
+							"description": "文件完整路径、文件夹也可以",
+							"type": "text"
+						},
+						{
+							"key": "bucketName",
+							"value": "go-api-proj",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/delete?fileName=实验报告模板.doc&bucketName=go-api-proj",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/delete",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -192,13 +224,15 @@
 					"query": [
 						{
 							"key": "fileName",
-							"value": "实验报告模板.doc",
-							"description": "%^$#^%$&$^@$%$%%@%$@"
+							"value": "Image/SEMZ]CMXML@4ZO%{@B1M%V2.jpg",
+							"description": "文件完整路径、文件夹也可以",
+							"disabled": true
 						},
 						{
 							"key": "bucketName",
 							"value": "go-api-proj",
-							"description": "#@%^^$%((*(*(*(*(&(&&(*&(*&*&"
+							"description": "#@%^^$%((*(*(*(*(&(&&(*&(*&*&",
+							"disabled": true
 						}
 					]
 				}
@@ -206,10 +240,24 @@
 			"response": []
 		},
 		{
-			"name": "ListFiles",
+			"name": "ListFilesOfaBucket(不要用这个，这个的功能是列举所有的文件)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
 				"url": {
 					"raw": "{{ipaddress}}:8080/v1/FileSystem/getFileList/:bucketName",
 					"host": [
@@ -221,6 +269,13 @@
 						"FileSystem",
 						"getFileList",
 						":bucketName"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
 					],
 					"variable": [
 						{
@@ -234,12 +289,12 @@
 			"response": []
 		},
 		{
-			"name": "ListFileWithPrefix",
+			"name": "ListFileWithPrefix（列出当前目录下面的所有文件，包括子目录）",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/getFileWithPrefix/:bucketName/:prefix",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/getFileWithPrefix/:bucketName/?prefix=Image/",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -249,16 +304,30 @@
 						"FileSystem",
 						"getFileWithPrefix",
 						":bucketName",
-						":prefix"
+						""
+					],
+					"query": [
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "prefix",
+							"value": "Image/",
+							"description": "要列举的文件夹路径（完整路径）"
+						},
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
 					],
 					"variable": [
 						{
 							"key": "bucketName",
-							"value": ""
-						},
-						{
-							"key": "prefix",
-							"value": ""
+							"value": "go-api-proj",
+							"description": "bucketName"
 						}
 					]
 				}
@@ -270,7 +339,138 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/Rename/:bucketName?oldfileName=论文数据对比.docx&newfileName=可爱沈之豪.docx",
+					"host": [
+						"{{ipaddress}}"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem",
+						"Rename",
+						":bucketName"
+					],
+					"query": [
+						{
+							"key": "oldfileName",
+							"value": "论文数据对比.docx",
+							"description": "旧名字（完整路径）"
+						},
+						{
+							"key": "newfileName",
+							"value": "可爱沈之豪.docx",
+							"description": "新名字（完整路径）"
+						}
+					],
+					"variable": [
+						{
+							"key": "bucketName",
+							"value": "go-api-proj",
+							"description": "bucketName"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListDirInfo（列出当前目录下面的所有目录信息)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/ListDirInfo/:bucketName?dirName=Image/",
+					"host": [
+						"{{ipaddress}}"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem",
+						"ListDirInfo",
+						":bucketName"
+					],
+					"query": [
+						{
+							"key": "dirName",
+							"value": "Image/",
+							"description": "完整路径"
+						}
+					],
+					"variable": [
+						{
+							"key": "bucketName",
+							"value": "go-api-proj"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateFolder",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/CreateFolder/:bucketName?dirName=Images/",
+					"host": [
+						"{{ipaddress}}"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem",
+						"CreateFolder",
+						":bucketName"
+					],
+					"query": [
+						{
+							"key": "dirName",
+							"value": "Images/"
+						}
+					],
+					"variable": [
+						{
+							"key": "bucketName",
+							"value": "go-api-proj"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteFolder",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/DeleteFolder/:bucketName?dirName=Images/",
+					"host": [
+						"{{ipaddress}}"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem",
+						"DeleteFolder",
+						":bucketName"
+					],
+					"query": [
+						{
+							"key": "dirName",
+							"value": "Images/"
+						}
+					],
+					"variable": [
+						{
+							"key": "bucketName",
+							"value": "go-api-proj"
+						}
+					]
+				}
 			},
 			"response": []
 		}
