@@ -136,7 +136,7 @@
 						},
 						{
 							"key": "filePath",
-							"value": "Image",
+							"value": "",
 							"description": "上传路径是什么",
 							"type": "text"
 						}
@@ -294,7 +294,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/getFileWithPrefix/:bucketName/?prefix=Image/",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/getFileWithPrefix/:bucketName/?prefix=",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -308,13 +308,8 @@
 					],
 					"query": [
 						{
-							"key": null,
-							"value": "",
-							"disabled": true
-						},
-						{
 							"key": "prefix",
-							"value": "Image/",
+							"value": "",
 							"description": "要列举的文件夹路径（完整路径）"
 						},
 						{
@@ -380,7 +375,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/ListDirInfo/:bucketName?dirName=Image/",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/ListDirInfo/:bucketName?dirName=",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -394,7 +389,7 @@
 					"query": [
 						{
 							"key": "dirName",
-							"value": "Image/",
+							"value": "",
 							"description": "完整路径"
 						}
 					],
@@ -414,7 +409,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/CreateFolder/:bucketName?dirName=Images/",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/CreateFolder/:bucketName?dirName=可爱沈之豪",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -428,7 +423,7 @@
 					"query": [
 						{
 							"key": "dirName",
-							"value": "Images/"
+							"value": "可爱沈之豪"
 						}
 					],
 					"variable": [
@@ -447,7 +442,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ipaddress}}:8080/v1/FileSystem/DeleteFolder/:bucketName?dirName=Images/",
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/DeleteFolder/:bucketName?dirName=Docs",
 					"host": [
 						"{{ipaddress}}"
 					],
@@ -461,7 +456,44 @@
 					"query": [
 						{
 							"key": "dirName",
+							"value": "Docs"
+						}
+					],
+					"variable": [
+						{
+							"key": "bucketName",
+							"value": "go-api-proj"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RenameFolders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ipaddress}}:8080/v1/FileSystem/RenameFolder/:bucketName?olddirName=Images/&newdirName=ccc/",
+					"host": [
+						"{{ipaddress}}"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"FileSystem",
+						"RenameFolder",
+						":bucketName"
+					],
+					"query": [
+						{
+							"key": "olddirName",
 							"value": "Images/"
+						},
+						{
+							"key": "newdirName",
+							"value": "ccc/"
 						}
 					],
 					"variable": [
